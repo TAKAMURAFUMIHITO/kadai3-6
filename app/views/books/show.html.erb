@@ -1,0 +1,9 @@
+<h1>Book detail</h1>
+<div>
+  <%= image_tag 'sample-author1.jpg' %>
+  <%= @book.title %>
+  <%= @book.body %>
+  <% if @book.user == current_user %>
+    <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <% end %>
+</div>
