@@ -70,7 +70,9 @@
             <% end %>
           </td>
           <td>
-            <a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_book_28676" rel="nofollow" data-method="delete" href="/books/28676">Destroy</a>
+            <%= link_to book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" do %>
+              Destroy
+            <% end %>
           </td>
         </tr>
       </tbody>
