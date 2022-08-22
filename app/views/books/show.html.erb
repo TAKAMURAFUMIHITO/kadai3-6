@@ -1,4 +1,7 @@
 <main>
+  <% flash.each do |message_type, message| %>
+　  <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
   <p id="notice"></p>
   <div class="container px-5 px-sm-0">
     <% if @book.errors.any? %>
@@ -15,14 +18,8 @@
       <%= render 'users/list', user: @user %>
 
         <div class="row" >
-          <% if @book.user == current_user %>
-            <%= link_to edit_user_path(@user), class: 'btn btn-outline-secondary btn-block' do %>
-              <i class="fas fa-user-cog fa-w-20"></i>
-            <% end %>
-          <% else %>
-            <%= link_to user_path(current_user), class: 'btn btn-outline-secondary btn-block' do %>
-              <i class="fas fa-user-cog fa-w-20"></i>
-            <% end %>
+          <%= link_to edit_user_path(@user.id), class: 'btn btn-outline-secondary btn-block' do %>
+            <i class="fas fa-user-cog fa-w-20"></i>
           <% end %>
         </div>
 
@@ -48,7 +45,8 @@
               <tr>
                 <td>
                   <%= link_to user_path(@book.user) do %>
-                    <%= image_tag @book.user.get_profile_image(100,100) %>
+                    <%= image_tag @book.user.get_profile_image(100,100) %><br>
+                    <%= @book.user.name %>
                   <% end %>
                 </td>
                 <td>
